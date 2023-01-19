@@ -14,20 +14,28 @@
       </router-link>
     </div>
 
-    <div class="movies-list">
-      <h1>Movies</h1>
+    <div class="movie-list" v-for="movie in movies" :key="movie.imdbID">
+      <h2>{{ movie }}</h2>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import env from './env';
 
 const search = ref('');
+const movies = ref(['']);
 
 const searchMovies = () => {
   if(search.value !== '') {
-    console.log(search.value)
+    fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+    .then(response => response.json())
+    .then(data => {
+      movies.value = data.search;
+      search.value = '';
+      console.log(data)
+    })
   }
 }
 </script>
