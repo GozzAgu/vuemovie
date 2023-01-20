@@ -16,8 +16,10 @@
         <div class="card" style="width: 18rem;">
           <img :src="movie.Poster" class="card-img-top" alt="...">
           <div class="card-body">
-            <router-link :to="`/movie/${movie.imdbID}`">
+            <router-link class="link d-flex-column" :to="`/movie/${movie.imdbID}`">
               {{ movie.Title }}
+              {{ movie.Type }}
+              {{ movie.Year }}
             </router-link>
           </div>
         </div>
@@ -40,7 +42,6 @@ const searchMovies = () => {
     .then(data => {
       movies.value = data.Search;
       Search.value = '';
-      movies.value.push(data)
       console.log(data)
     })
   }
@@ -48,5 +49,7 @@ const searchMovies = () => {
 </script>
 
 <style scoped>
-
+.link {
+  text-decoration: none;
+}
 </style>
