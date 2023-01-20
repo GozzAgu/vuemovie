@@ -12,14 +12,15 @@
     </div>
 
     <div class="movie-list ps-5 pe-5" v-for="movie in movies" :key="movie.imdbID">
-      <div>
-        <b-card class="card p-2">
-          <b-card-text>
+      <div class="cards p-2">
+        <div class="card" style="width: 18rem;">
+          <img :src="movie.Poster" class="card-img-top" alt="...">
+          <div class="card-body">
             <router-link :to="`/movie/${movie.imdbID}`">
               {{ movie.Title }}
             </router-link>
-          </b-card-text>
-        </b-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -30,11 +31,7 @@ import { ref } from 'vue'
 import env from './env';
 
 const Search = ref('');
-const movies = ref([
-  {
-    Title: 'Scar'
-  }
-]);
+const movies = ref([]);
 
 const searchMovies = () => {
   if(Search.value !== '') {
@@ -44,7 +41,12 @@ const searchMovies = () => {
       movies.value = data.Search;
       Search.value = '';
       movies.value.push(data)
+      console.log(data)
     })
   }
 }
 </script>
+
+<style scoped>
+
+</style>
