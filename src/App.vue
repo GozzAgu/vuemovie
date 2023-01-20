@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <router-link to="/">
-      <h1><span>Vue</span>Movies</h1>
+    <router-link class="link" to="/">
+      <h1><b>Vue </b><span class="badge bg-secondary">Movies</span></h1>
     </router-link>
   </nav>
   <main>
@@ -23,6 +23,10 @@
 }
 
 a {
+  text-decoration: none;
+}
+
+.link {
   text-decoration: none;
 }
 
