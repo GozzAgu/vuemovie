@@ -13,14 +13,12 @@
 
     <div class="movie-list ps-5 pe-5" v-for="movie in movies" :key="movie.imdbID">
       <div>
-        <b-card>
+        <b-card class="card p-2">
           <b-card-text>
             <router-link :to="`/movie/${movie.imdbID}`">
               {{ movie.Title }}
             </router-link>
           </b-card-text>
-
-          <b-button @click="goToMovie" variant="primary">Movie Detail</b-button>
         </b-card>
       </div>
     </div>
@@ -32,7 +30,11 @@ import { ref } from 'vue'
 import env from './env';
 
 const Search = ref('');
-const movies = ref([]);
+const movies = ref([
+  {
+    Title: 'Scar'
+  }
+]);
 
 const searchMovies = () => {
   if(Search.value !== '') {
